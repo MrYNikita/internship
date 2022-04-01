@@ -1,17 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Select, FormControl, InputLabel, MenuItem, Button } from '@mui/material';
+
+class FormAPI extends React.Component {
+
+    constructor (props) {
+
+        super(props);
+
+        let {
+
+            id,
+            name,
+            items,
+
+        } = props;
+
+        this.id = id;
+        this.name = name;
+        this.items = items;
+
+    };
+
+    render() {
+
+        return (
+
+            <FormControl fullWidth id={this.id}>
+                <InputLabel>{this.name} API</InputLabel>
+                <Select onChange={() => {}} id={`${this.id}__select`}>
+                    {((n) => {
+
+                        let arr = new Array(n).fill(0);
+
+                        for (let i in arr) { arr[i] = <MenuItem>{Math.random()}</MenuItem> };
+
+                        return arr;
+
+                    })(5)}
+                </Select>
+                <Button>Save</Button>
+            </FormControl>
+
+        );
+
+    };
+
+};
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <div>
+        <FormAPI id='form_TTS' name='TTS'/>
+        <FormAPI id='form_STT' name='STT'/>
+    </div>, document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
