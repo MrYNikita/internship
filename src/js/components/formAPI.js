@@ -16,7 +16,7 @@ function FormAPI (props) {
                     
                     const value = Math.random();
 
-                    arr[i] = <MenuItem value={value}>{value}</MenuItem>
+                    arr[i] = <MenuItem key={`${props.id}__select_item-${i}`} value={value}>{value}</MenuItem>
                 
                 };
 
