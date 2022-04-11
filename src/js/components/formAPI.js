@@ -1,31 +1,34 @@
+import React from 'react';
 import { Select, FormControl, InputLabel, MenuItem, Button, FormHelperText } from '@mui/material';
 
 function FormAPI (props) {
 
-    return <FormControl fullWidth id={props.id}>
-        <InputLabel>{props.name} API</InputLabel>
+    const {
+
+        id,
+        name,
+
+    } = props;
+
+    const [api,setApi] = React.useState('');
+
+    const handleChange = (event) => { setApi(event.target.value); }
+
+    return <FormControl id={id}>
+        <InputLabel id={`${id}__label_input`}>{`${name}`}</InputLabel>
         <Select
-        onChange={() => {}}
-        id={`${props.id}__select`}
+            id={`${id}__select`}
+            label="api"
+            value={api}
+            labelId={`${id}__label_input`}
+            onChange={handleChange}
         >
-            {((n) => {
-
-                let arr = new Array(n).fill(0);
-
-                for (let i in arr) {
-                    
-                    const value = Math.random();
-
-                    arr[i] = <MenuItem key={`${props.id}__select_item-${i}`} value={value}>{value}</MenuItem>
-                
-                };
-
-                return arr;
-
-            })(5)}
+            <MenuItem value="202.12.102.30">202.12.102.30</MenuItem>
+            <MenuItem value="130.187.0.1">130.187.0.1</MenuItem>
+            <MenuItem value="112.98.105.120">112.98.105.120</MenuItem>
+            <MenuItem value="100.10.100.1">112.98.105.120</MenuItem>
         </Select>
-        <FormHelperText>Select {props.name} API</FormHelperText>
-        <Button>Save</Button>
+        <Button>сохранить</Button>
     </FormControl>;
 
 };
