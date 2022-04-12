@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import FormAPI from './js/components/formAPI.js';
 
 function App() {
@@ -5,8 +6,7 @@ function App() {
         <div className="App">
             <header className="app-header"></header>
             <div className="app-body">
-                <FormAPI id='form_TTS' name='TTS'/>
-                <FormAPI id='form_STT' name='STT'/>
+                <FormAPI/>
             </div>
             <footer className="app-footer"></footer>
         </div>
