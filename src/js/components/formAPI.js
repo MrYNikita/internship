@@ -65,7 +65,7 @@ function FormAPI (props) {
                     {apiSTTCatalog.filter(item => item.userId === apiTTS?.id).map(item => <MenuItem value={item} key={item.id}>{item.title}</MenuItem> )}
                 </Select>
             </FormControl>
-            <Button fullWidth>СОХРАНИТЬ</Button>
+            <Button fullWidth id="box_button">СОХРАНИТЬ</Button>
         </Box>
     )
 

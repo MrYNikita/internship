@@ -31,7 +31,9 @@ body {
     flex-direction: column;
 }
 #box_form > * {
-
     margin: 5px;
-
+}
+#box_button {
+    color: white;
+    background-color: #182d64;
 }
