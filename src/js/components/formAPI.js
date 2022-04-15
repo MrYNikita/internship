@@ -1,5 +1,6 @@
 import React from 'react';
-import { Select, FormControl, InputLabel, MenuItem, Box, Button } from '@mui/material';
+import {  } from 'react-redux';
+import { Select, FormControl, InputLabel, MenuItem, Box, Button, getAppBarUtilityClass } from '@mui/material';
 
 function FormAPI (props) {
 
@@ -11,13 +12,14 @@ function FormAPI (props) {
 
     } = props;
 
-    const [apiTTS,setApiTTS] = React.useState({});
-    const [apiSTT,setApiSTT] = React.useState({});
+    const [apiTTS,setApiTTS] = React.useState('');
+    const [apiSTT,setApiSTT] = React.useState('');
     const [apiTTSCatalog,setApiTTSCatalog] = React.useState([]);
     const [apiSTTCatalog,setApiSTTCatalog] = React.useState([]);
 
     const handleChangeApiTTS = (event) => {
 
+        console.log(event.target.value);
         setApiSTT({});
         setApiTTS(event.target.value);
 
@@ -37,6 +39,8 @@ function FormAPI (props) {
         .then(response => response.json())
         .then(json => setApiSTTCatalog(json));
 
+        console.log();
+
     },[]);
 
     return (
@@ -50,7 +54,7 @@ function FormAPI (props) {
                     labelId="box_form__label_TTS"
                     onChange={handleChangeApiTTS}
                 >
-                    {apiTTSCatalog.map(item => <MenuItem value={item} key={item.id}>{item.name}</MenuItem> )}
+                    {apiTTSCatalog.map(item => <MenuItem value={item} key={item.id}>{item.name}</MenuItem>)}
                 </Select>
             </FormControl>
             <FormControl fullWidth>
@@ -62,7 +66,7 @@ function FormAPI (props) {
                     labelId="box_form__label_STT"
                     onChange={handleChangeApiSTT}
                 >
-                    {apiSTTCatalog.filter(item => item.userId === apiTTS?.id).map(item => <MenuItem value={item} key={item.id}>{item.title}</MenuItem> )}
+                    {apiSTTCatalog.filter(item => item.userId === apiTTS.id).map(item => <MenuItem value={item} key={item.id}>{item.title}</MenuItem>)}
                 </Select>
             </FormControl>
             <Button fullWidth id="box_button">СОХРАНИТЬ</Button>
